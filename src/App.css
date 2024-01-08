@@ -117,6 +117,53 @@ span{
   gap: 1rem;
   font-size: 14px;
 }
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.siparis{
+  border-top: 2px solid rgb(189, 189, 189);
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+.siparis button{
+  background-color: #FDC913;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 1rem;
+}
+.siparis span{
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: black;
+
+  text-align: center;
+  padding: 5px 10px;
+}
+.buton{
+  display: flex;
+}
+.siparisToplam{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.ozet{
+  padding: 30px 60px;
+  margin-top: 1rem;
+  border: 1px solid rgb(189, 189, 189);
+}
+.siparisver{
+  width: 100%;
+}
+
 
 
 
