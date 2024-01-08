@@ -1,0 +1,51 @@
+header{
+    background-color: #CE2829;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .linkler{
+    display: flex;
+    margin-top: 40px;
+    align-items: flex-start;
+  }
+  a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+  }
+  .icerikler{
+    width: 35%;
+    margin: 0 auto;
+  }
+  .anaSection{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  }
+  .aciklama{
+    display: flex;
+    flex-direction: column;
+  }
+  .fiyat{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .gri{
+    color: #5F5F5F;
+    letter-spacing: 1px;
+  }
+
+  @media screen and (max-width:700px) {
+    .icerikler{
+        width: 70%;
+        margin: 0 auto;
+      }
+    
+  }

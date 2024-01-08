@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import './FormAlani.css'
 
 export default function FormAlani(props) {
     const {toplam,setToplam,ek,setEk}=props
@@ -30,7 +31,7 @@ export default function FormAlani(props) {
         setForm({ ...form, [name]: value })
 
         if (name == 'pepperoni' || name == 'sosis' || name == 'jambon' || name == 'izgara' || name == 'sogan' || name == 'domates' || name == 'misir'
-            || name == 'sucuk' || name == 'sogan' || name == 'biber' || name == 'sucuk' || name == 'ananas' || name == 'kabak') {
+            || name == 'sucuk' ||  name == 'biber' ||  name == 'ananas' || name == 'kabak'|| name=='jalepeno') {
             if (value === true) {
                 setEk(ek + 5)               
             } else {
@@ -90,7 +91,7 @@ export default function FormAlani(props) {
                         Orta</label>
                     <label><input onChange={handleChange} type="radio" id="'büyük" name="boyut" value='büyük' checked={form.boyut=='büyük'?true:false} />
                         Büyük</label>
-                        {!errors.boyut && <p style={{color:'red',marginTop:'0',fontSize:'12px'}}>Lütfen bir boyut seçiniz</p>}
+                        {!errors.boyut && <p style={{color:'red',marginTop:'0',fontSize:'12px'}}>Lütfen bir boyut seçiniz!</p>}
                 </div>
             </div>
             <div>
@@ -101,7 +102,7 @@ export default function FormAlani(props) {
                     <option value="orta">Orta</option>
                     <option value="kalin">Kalın</option>
                 </select>
-                {!errors.kalinlik && <p style={{color:'red',marginTop:'0',fontSize:'12px'}}>Lütfen bir boyut seçiniz</p>}
+                {!errors.kalinlik && <p style={{color:'red',marginTop:'0',fontSize:'12px'}}>Lütfen bir kalınlık seçiniz!</p>}
             </div>
         </div>
         <div style={{ marginTop: '2rem' }}>
@@ -132,16 +133,14 @@ export default function FormAlani(props) {
                             Sucuk</label>
                         <label><input onChange={handleChange} checked={form.jalepeno} type="checkbox" name="jalepeno" id="jalepeno" />
                             Jalepeno</label>
-                        <label><input onChange={handleChange} checked={form.sogan} type="checkbox" name="sogan" id="sogan" />
-                            Soğan</label>
+                            <label><input onChange={handleChange} checked={form.biber} type="checkbox" name="biber" id="biber" />
+                            Biber</label>
+                       
                     </div>
                 </div>
                 <div>
                     <div className="birinci" >
-                        <label><input onChange={handleChange} checked={form.biber} type="checkbox" name="biber" id="biber" />
-                            Biber</label>
-                        <label> <input onChange={handleChange} checked={form.sucuk} type="checkbox" name="sucuk" id="sucuk" />
-                            Sucuk</label>
+                       
                         <label><input onChange={handleChange} checked={form.ananas} type="checkbox" name="ananas" id="ananas" />
                             Ananas</label>
                         <label><input onChange={handleChange} checked={form.kabak} type="checkbox" name="kabak" id="kabak" />

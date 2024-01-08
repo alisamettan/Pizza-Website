@@ -1,5 +1,6 @@
 import FormAlani from './FormAlani'
 import logo from './assets/logo.svg'
+import './OrderPizza.css'
 
 export default function OrderPizza(props) {
     const {toplam,setToplam,ek,setEk}=props
