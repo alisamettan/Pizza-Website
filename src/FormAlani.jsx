@@ -68,5 +68,9 @@ export default function FormAlani() {
                 </div>
             </div>
         </div>
+        <div>
+        <p style={{ fontWeight: 'bold', fontSize: '18px' }}>Sipariş Notu</p>
+        <label><input type="text" name="not" placeholder="Siparişine eklemek istediğin bir not var mı? " /></label>
+        </div>
     </form>)
 }
