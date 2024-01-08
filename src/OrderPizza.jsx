@@ -1,7 +1,8 @@
 import FormAlani from './FormAlani'
 import logo from './assets/logo.svg'
 
-export default function OrderPizza() {
+export default function OrderPizza(props) {
+    const {toplam,setToplam,ek,setEk}=props
     return (<>
         <div>
             <header>
@@ -25,7 +26,7 @@ export default function OrderPizza() {
                             genellikle yuvarlak, düzlestirilmis mayalr bugday bazli hamurdan olusan italyan kökenli lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.</p>
                     </div>
                     <div>
-                        <FormAlani/>
+                        <FormAlani toplam={toplam} setToplam={setToplam} ek={ek} setEk={setEk}/>
                     </div>
                 </section>
             </div>

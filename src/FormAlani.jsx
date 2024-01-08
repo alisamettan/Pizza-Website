@@ -2,13 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function FormAlani() {
+export default function FormAlani(props) {
+    const {toplam,setToplam,ek,setEk}=props
+    
     const history=useHistory();
 
     const [form, setForm] = useState({});
-    const [ek, setEk] = useState(0);
+    //const [ek, setEk] = useState(0);
     const [adet,setAdet]=useState(1);
-    const [toplam,setToplam]=useState(0)
+    //const [toplam,setToplam]=useState(0)
     const [errors,setErrors]=useState({})
     const [isValid,setIsValid]=useState(true)
     const [detay,setDetay]=useState([])
