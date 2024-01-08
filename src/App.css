@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+#root {
+  text-align: center;
+  box-sizing: border-box;
+  color: white;
+}
+body{
+  margin: 0 auto;
+  padding: 0 ;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.anasayfa{
+  background: url('./assets/mvp-banner.png');
+  background-size:cover ;
+  width: 100vw;
+  height: 100vh;
+  line-height: 4px;
+}
+.content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 6rem;
+}
+.anasayfaImg{
+  padding-bottom: 2rem;
+  width: 20%;
+}
+.content p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: -1px;
+  
+}
+.aciktimButon{
+  margin-top: 2rem;
+  padding: 10px 30px;
+  border-radius: 20px;
+  border: none;
+  background-color: #FDC913;
+}
+.aciktimButon:hover{
+  background-color: white;
+}
+
+header{
+  background-color: #CE2829;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.linkler{
+  display: flex;
+  margin-top: 40px;
+  align-items: flex-start;
+}
+a{
+  color: white;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+.icerikler{
+  width: 35%;
+  margin: 0 auto;
+}
+.anaSection{
+color: black;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+text-align: left;
+}
+.aciklama{
+  display: flex;
+  flex-direction: column;
+}
+.fiyat{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.gri{
+  color: #5F5F5F;
+  letter-spacing: 1px;
+}
+.boyut{
+  display: flex;
+  flex-direction: column; 
+  gap: 1rem;
+  font-weight: bold;
+  font-size: 14px;
+}
+.boyutHamur{
+  display: flex;
+  flex-direction: row;
+  gap: 15rem;
+}
+span{
+  color:#CE2829 ;
+}
+.ekmalzemeler{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.birinci{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction:column;
+  gap: 1rem;
+  font-size: 14px;
+}
+
+
+
+
