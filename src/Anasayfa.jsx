@@ -9,7 +9,7 @@ export default function AnaSayfa() {
                 <img className='anasayfaImg' src={logo} alt="" />
                 <p>KOD ACIKTIRIR</p>
                 <p>PIZZA,DOYURUR</p>
-                <button onClick={()=>history.push('/order')} className='aciktimButon'>ACIKTIM</button>
+                <button data-cy='nav-order' onClick={()=>history.push('/order')} className='aciktimButon'>ACIKTIM</button>
             </div>
         </div>
     </>)
