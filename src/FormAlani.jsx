@@ -17,6 +17,8 @@ export default function FormAlani(props) {
     const [selectedCheckboxes, setSelectedCheckboxes] = useState(0);
 
     useEffect(() => {
+
+        
         if (form.boyut && form.kalinlik) {
             setIsValid(true)
         }
@@ -25,19 +27,21 @@ export default function FormAlani(props) {
         }
         const checkedCheckboxes = document.querySelectorAll('.checkbox:checked').length;
         setSelectedCheckboxes(checkedCheckboxes);
-
-        const handleWindowClick = () => {
+        
+        const resetButton=document.querySelector('.resetButton');
+        const handleResetClick = (event) => {
+            event.preventDefault();
             document.querySelectorAll('.checkbox').forEach(cb => {
                 cb.checked=false;
+                cb.disabled=false;
                 
             });
-            
-          };
-      
-          window.addEventListener('click', handleWindowClick);
-      
+            setSelectedCheckboxes(0)
+            setEk(0);
+          };        
+          resetButton.addEventListener('click',handleResetClick)
           return () => {
-            window.removeEventListener('click', handleWindowClick);
+            resetButton.removeEventListener('click', handleResetClick);
           };
         
     }, [form])
@@ -169,7 +173,9 @@ export default function FormAlani(props) {
                     </div>
                 </div>
             </div>
+            <button className="resetButton">Reset</button>            
         </div>
+        
         <div className="alttaraf" style={{ marginTop: '5rem' }}>
             <p style={{ fontWeight: 'bold', fontSize: '18px' }}>Sipariş Notu</p>
             <div className="birinci">
