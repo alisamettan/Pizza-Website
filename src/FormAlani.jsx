@@ -18,7 +18,7 @@ export default function FormAlani(props) {
 
     useEffect(() => {
 
-        
+
         if (form.boyut && form.kalinlik) {
             setIsValid(true)
         }
@@ -27,23 +27,21 @@ export default function FormAlani(props) {
         }
         const checkedCheckboxes = document.querySelectorAll('.checkbox:checked').length;
         setSelectedCheckboxes(checkedCheckboxes);
-        
-        const resetButton=document.querySelector('.resetButton');
+
+        const resetButton = document.querySelector('.resetButton');
         const handleResetClick = (event) => {
             event.preventDefault();
             document.querySelectorAll('.checkbox').forEach(cb => {
-                cb.checked=false;
-                cb.disabled=false;
-                
+                cb.disabled = false
+                cb.checked = false
+                setEk(0)
             });
             setSelectedCheckboxes(0)
-            setEk(0);
-          };        
-          resetButton.addEventListener('click',handleResetClick)
-          return () => {
-            resetButton.removeEventListener('click', handleResetClick);
-          };
-        
+            setForm({});
+        };
+        resetButton.addEventListener('click', handleResetClick)
+
+
     }, [form])
     const disableCheckboxes = selectedCheckboxes >= 10;
 
@@ -136,7 +134,7 @@ export default function FormAlani(props) {
             <div className="ekmalzemeler">
                 <div >
                     <div className="birinci" >
-                        <label><input  onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.pepperoni} type="checkbox" name="pepperoni" id="pepperoni" />
+                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.pepperoni} type="checkbox" name="pepperoni" id="pepperoni" />
                             Pepperoni</label>
                         <label> <input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.sosis} type="checkbox" name="sosis" id="sosis" />
                             Sosis</label>
@@ -173,9 +171,9 @@ export default function FormAlani(props) {
                     </div>
                 </div>
             </div>
-            <button className="resetButton">Reset</button>            
+            <button className="resetButton">Reset</button>
         </div>
-        
+
         <div className="alttaraf" style={{ marginTop: '5rem' }}>
             <p style={{ fontWeight: 'bold', fontSize: '18px' }}>Sipariş Notu</p>
             <div className="birinci">
