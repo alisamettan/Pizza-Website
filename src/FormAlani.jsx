@@ -5,16 +5,23 @@ import './FormAlani.css'
 
 export default function FormAlani(props) {
     const { toplam, setToplam, ek, setEk } = props
-
     const history = useHistory();
-
-    const [form, setForm] = useState({});
-    //const [ek, setEk] = useState(0);
+    
+    const initialForm={
+        selectedItems: [], 
+        boyut:'',
+        kalinlik: '',
+        not: ''
+      }
+    
+    const [form, setForm] = useState(initialForm);
     const [adet, setAdet] = useState(1);
-    //const [toplam,setToplam]=useState(0)
     const [errors, setErrors] = useState({})
     const [isValid, setIsValid] = useState(true)
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState(0);
+    const[disableCheckboxes,setDisableCheckboxes]=useState(false)
+    const [errorMessages, setErrorMessages] = useState("");
+    
+    const ekmalzemeler = ['Pepperoni', 'Sosis', 'Kanada Jambonu', 'Tavuk Izgara', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalepeno', 'Biber', 'Ananas', 'Kabak']
 
     useEffect(() => {
 
@@ -25,59 +32,53 @@ export default function FormAlani(props) {
         else {
             setIsValid(false)
         }
-        const checkedCheckboxes = document.querySelectorAll('.checkbox:checked').length;
-        setSelectedCheckboxes(checkedCheckboxes);
-
-        const resetButton = document.querySelector('.resetButton');
-        const handleResetClick = (event) => {
-            event.preventDefault();
-            document.querySelectorAll('.checkbox').forEach(cb => {
-                cb.disabled = false
-                cb.checked = false
-                setEk(0)
-            });
-            setSelectedCheckboxes(0)
-            setForm({});
+        
+        const checkedCheckboxes = form.selectedItems.length;
+        setDisableCheckboxes(checkedCheckboxes >= 10);
+  
+        document.querySelector('.resetButton').addEventListener('click',(event)=>{
+            event.preventDefault()
+            setDisableCheckboxes(false)
             
-        };
-        resetButton.addEventListener('click', handleResetClick)
-
+        })
 
     }, [form])
-    const disableCheckboxes = selectedCheckboxes >= 10;
+   
 
-    const handleChange = (event) => {
-        let { value, name, type, checked } = event.target;
-        value = type == 'checkbox' ? checked : value;
-        setForm({ ...form, [name]: value })
+    
+  const handleChange = (event) => {
+    const { value, name, type, checked } = event.target;
 
-        if (name == 'pepperoni' || name == 'sosis' || name == 'jambon' || name == 'izgara' || name == 'sogan' || name == 'domates' || name == 'misir'
-            || name == 'sucuk' || name == 'biber' || name == 'ananas' || name == 'kabak' || name == 'jalepeno') {
-            if (value === true) {
-                setEk(ek + 5)
-            } else {
-                setEk(ek - 5)
-            }
-        }
+    if (type === 'checkbox') {
+      
+      let updatedItems=[];
+      if (checked) {
+        updatedItems = [...form.selectedItems, name];
+        setEk(ek+5)
+      } else {
+        updatedItems = form.selectedItems.filter(item => item !== name);
+        setEk(ek-5)
+      }
 
-
-
-        if (name == 'boyut') {
-            if (value === true) {
-                setErrors({ ...errors, [name]: false })
-            } else {
-                setErrors({ ...errors, [name]: true })
-            }
-        }
-        if (name == 'kalinlik') {
-            if (value === true) {
-                setErrors({ ...errors, [name]: false })
-            } else {
-                setErrors({ ...errors, [name]: true })
-            }
-        }
-
+      setForm({...form,
+        selectedItems: updatedItems
+    });
+    } else {
+      
+      setForm({...form,
+        [name]: value
+    });
     }
+
+    if (name === 'boyut' || name === 'kalinlik') {
+      if (value === true) {
+        setErrors({ ...errors, [name]: false });
+      } else {
+        setErrors({ ...errors, [name]: true });
+      }
+    }
+
+  };
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -133,45 +134,13 @@ export default function FormAlani(props) {
         <div style={{ marginTop: '2rem' }}>
             <p style={{ fontWeight: 'bold', fontSize: '18px' }}>Ek Malzemeler</p>
             <p style={{ fontSize: '14px' }}>En Fazla 10 malzeme seçebilirsiniz.5₺</p>
-            <div className="ekmalzemeler">
-                <div >
-                    <div className="birinci" >
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.pepperoni} type="checkbox" name="pepperoni" id="pepperoni" />
-                            Pepperoni</label>
-                        <label> <input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.sosis} type="checkbox" name="sosis" id="sosis" />
-                            Sosis</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.jambon} type="checkbox" name="jambon" id="jambon" />
-                            Kanada Jambonu</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.izgara} type="checkbox" name="izgara" id="izgara" />
-                            Tavuk Izgara</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.sogan} type="checkbox" name="sogan" id="sogan" />
-                            Soğan</label>
-                    </div>
-                </div>
-                <div>
-                    <div className="birinci" >
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.domates} type="checkbox" name="domates" id="domates" />
-                            Domates</label>
-                        <label> <input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.misir} type="checkbox" name="misir" id="misir" />
-                            Mısır</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.sucuk} type="checkbox" name="sucuk" id="sucuk" />
-                            Sucuk</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.jalepeno} type="checkbox" name="jalepeno" id="jalepeno" />
-                            Jalepeno</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.biber} type="checkbox" name="biber" id="biber" />
-                            Biber</label>
-
-                    </div>
-                </div>
-                <div>
-                    <div className="birinci" >
-
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.ananas} type="checkbox" name="ananas" id="ananas" />
-                            Ananas</label>
-                        <label><input onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.kabak} type="checkbox" name="kabak" id="kabak" />
-                            Kabak</label>
-                    </div>
-                </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', rowGap: '2rem', width: '100%', justifyContent: 'space-between' }} className="ekmalzemeler">
+                {ekmalzemeler.map(
+                    (item, index) => {
+                       return <label ><input key={index} onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.item} type="checkbox" name={item} />
+                            {item}</label>
+                    })
+                }
             </div>
             <button className="resetButton">Reset</button>
         </div>
