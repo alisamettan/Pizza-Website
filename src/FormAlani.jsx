@@ -38,6 +38,7 @@ export default function FormAlani(props) {
             });
             setSelectedCheckboxes(0)
             setForm({});
+            
         };
         resetButton.addEventListener('click', handleResetClick)
 
@@ -84,6 +85,7 @@ export default function FormAlani(props) {
         axios.post('https://reqres.in/api/users', form).then(response => {
             const data = response.data
             console.log(data)
+            setForm({})
             history.push('/success')
         })
     }
