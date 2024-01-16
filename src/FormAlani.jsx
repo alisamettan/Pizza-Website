@@ -133,7 +133,7 @@ export default function FormAlani(props) {
         <div style={{ marginTop: '2rem' }}>
             <p style={{ fontWeight: 'bold', fontSize: '18px' }}>Ek Malzemeler</p>
             <p style={{ fontSize: '14px' }}>En Fazla 10 malzeme seçebilirsiniz.5₺</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', width: '100%',marginTop:'2rem' }} className="  grid grid-rows-4 grid-flow-col gap-4">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', width: '100%',marginTop:'2rem' }} className="ekmalzemeler grid grid-rows-6 grid-flow-col gap-4 ">
                 {ekmalzemeler.map(
                     (item, index) => {
                        return <label style={{width:'40%'}} ><input key={index} onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.item} type="checkbox" name={item} />
