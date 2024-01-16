@@ -18,8 +18,7 @@ export default function FormAlani(props) {
     const [adet, setAdet] = useState(1);
     const [errors, setErrors] = useState({})
     const [isValid, setIsValid] = useState(true)
-    const[disableCheckboxes,setDisableCheckboxes]=useState(false)
-    const [errorMessages, setErrorMessages] = useState("");
+    const[disableCheckboxes,setDisableCheckboxes]=useState(false)    
     
     const ekmalzemeler = ['Pepperoni', 'Sosis', 'Kanada Jambonu', 'Tavuk Izgara', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalepeno', 'Biber', 'Ananas', 'Kabak']
 
@@ -134,10 +133,10 @@ export default function FormAlani(props) {
         <div style={{ marginTop: '2rem' }}>
             <p style={{ fontWeight: 'bold', fontSize: '18px' }}>Ek Malzemeler</p>
             <p style={{ fontSize: '14px' }}>En Fazla 10 malzeme seçebilirsiniz.5₺</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', rowGap: '2rem', width: '100%', justifyContent: 'space-between' }} className="ekmalzemeler">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', width: '100%',marginTop:'2rem' }} className="  grid grid-rows-4 grid-flow-col gap-4">
                 {ekmalzemeler.map(
                     (item, index) => {
-                       return <label ><input key={index} onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.item} type="checkbox" name={item} />
+                       return <label style={{width:'40%'}} ><input key={index} onChange={handleChange} className="checkbox" disabled={disableCheckboxes} checked={form.item} type="checkbox" name={item} />
                             {item}</label>
                     })
                 }
